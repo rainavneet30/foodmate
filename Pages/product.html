@@ -24,5 +24,58 @@ products.forEach(product => {
         <p>${product.description}</p>
     `;
     productList.appendChild(productItem);
-});
+});// Add navigation links to all pages
+const navLinks = document.createElement('nav');
+navLinks.innerHTML = `
+  <a href="index.html">Home</a>
+  <a href="product.html">Products</a>
+  <a href="bestsellers.html">Bestsellers</a>
+  <a href="about.html">About</a>
+`;
+document.body.insertBefore(navLinks, document.body.firstChild);
+
+// Add styles for better presentation
+const style = document.createElement('style');
+style.innerHTML = `
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  nav {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+  }
+  nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  #product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+  }
+  .product-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  .product-item img {
+    max-width: 100%;
+    height: auto;
+  }
+`;
+document.head.appendChild(style);
+
+//Function to replace image placeholders with high-quality images.  Requires an image API or local image directory.
+function replaceImagePlaceholders(){
+    const images = document.querySelectorAll('#product-list img');
+    images.forEach(img => {
+        //Replace with your image fetching logic.  Example using a placeholder API:
+        //img.src = 'https://source.unsplash.com/random/200x200/?food,' + img.alt;
+        //Or, if images are in a local directory:
+        img.src = 'images/' + img.alt.toLowerCase().replace(/ /g, '_') +
 </script>

@@ -1,0 +1,36 @@
+<h1>Our Bestsellers</h1>
+<p>Check out our most popular items!</p>
+<section id="bestsellers-list"></section>
+
+<script>
+const bestsellers = [{
+    { name: "Pasta", price: 12, image: "pasta.jpg", description: "Authentic Italian pasta" },
+
+    { name: "Pizza", price: 10, image: "pizza.jpg", description: "Delicious cheesy pizza" },
+    { name: "Burger", price: 8, image: "burger.jpg", description: "Juicy burger with all the fixings" },
+    { name: "Sushi", price: 15, image: "sushi.jpg", description: "Fresh and delicious sushi" }
+];
+
+const bestsellersList = document.getElementById("bestsellers-list");
+
+bestsellers.forEach(bestseller => {
+    const bestsellerItem = document.createElement("div");
+    bestsellerItem.classList.add("bestseller-item");
+    bestsellerItem.innerHTML = `
+        <img src="${bestseller.image}" alt="${bestseller.name}">
+        <h3>${bestseller.name}</h3>
+        <p>$${bestseller.price}</p>
+        <p>${bestseller.description}</p>
+    `;
+    bestsellersList.appendChild(bestsellerItem);
+});
+</script>
+// Add navigation links to all pages
+const navLinks = document.createElement('nav');
+navLinks.innerHTML = `
+  <a href="index.html">Home</a>
+  <a href="product.html">Products</a>
+  <a href="bestsellers.html">Bestsellers</a>
+  <a href="about.html">About</a>
+`;
+document.body.insertBefore(navLinks, document.body.firstChild);
