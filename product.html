@@ -1,0 +1,28 @@
+<h1>Our Products</h1>
+<p>Here you will find a wide variety of food items.</p>
+<section id="product-list">
+</section>
+
+<script>
+const products = [
+    { name: "Pizza", price: 10, image: "pizza.jpg", description: "Delicious cheesy pizza" },
+    { name: "Burger", price: 8, image: "burger.jpg", description: "Juicy burger with all the fixings" },
+    { name: "Pasta", price: 12, image: "pasta.jpg", description: "Authentic Italian pasta" },
+    { name: "Sushi", price: 15, image: "sushi.jpg", description: "Fresh and delicious sushi" },
+    { name: "Taco", price: 7, image: "taco.jpg", description: "Spicy and flavorful tacos" }
+];
+
+const productList = document.getElementById("product-list");
+
+products.forEach(product => {
+    const productItem = document.createElement("div");
+    productItem.classList.add("product-item");
+    productItem.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>$${product.price}</p>
+        <p>${product.description}</p>
+    `;
+    productList.appendChild(productItem);
+});
+</script>
