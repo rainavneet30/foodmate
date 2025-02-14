@@ -1,0 +1,34 @@
+let foodItems = [
+    { name: "Pizza", price: 10, image: "pizza.jpg", category: "Italian" },
+    { name: "Burger", price: 8, image: "burger.jpg", category: "American" },
+    { name: "Pasta", price: 12, image: "pasta.jpg", category: "Italian" },
+    { name: "Sushi", price: 15, image: "sushi.jpg", category: "Japanese" },
+    { name: "Taco", price: 7, image: "taco.jpg", category: "Mexican" }
+];
+
+function displayFoodItems(items) {
+    const foodList = document.getElementById("food-list");
+    foodList.innerHTML = ""; // Clear previous items
+
+    items.forEach(item => {
+        const foodItem = document.createElement("div");
+        foodItem.classList.add("food-item");
+        foodItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <h3>${item.name}</h3>
+            <p>$${item.price}</p>
+        `;
+        foodList.appendChild(foodItem);
+    });
+}
+<button>Filter by Category</button>
+
+displayFoodItems(foodItems);
+
+
+const categoryFilter = document.getElementById("category-filter");
+categoryFilter.addEventListener("change", () => {
+    const selectedCategory = categoryFilter.value;
+    const filteredItems = selectedCategory === "All" ? foodItems : foodItems.filter(item => item.category === selectedCategory);
+    displayFoodItems(filteredItems);
+});
